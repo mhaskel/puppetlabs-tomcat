@@ -76,9 +76,9 @@ describe 'Two different instances of Tomcat 6 in the same manifest', :unless => 
       }
       EOS
       apply_manifest(pp, :catch_failures => true, :acceptable_exit_codes => [0,2])
+      shell('sleep 15')
     end
     # test the server
-    sleep 15
     it 'tomcat6 should be serving a page on port 8280' do
       shell('curl localhost:8280', :acceptable_exit_codes => 0) do |r|
       #curl_with_retries('curl port 8081', default, 'localhost:8081', 0, 10, 2) do |r|
@@ -118,8 +118,8 @@ describe 'Two different instances of Tomcat 6 in the same manifest', :unless => 
       }
       EOS
       apply_manifest(pp, :catch_failures => true, :acceptable_exit_codes => [0,2])
+      shell('sleep 15')
     end
-    sleep 15
     it 'tomcat6 should not be serving a page on port 8280' do
       shell('curl localhost:8280', :acceptable_exit_codes => 7)
       #curl_with_retries('curl port 8081', default, 'localhost:8081', 7, 10, 2)
@@ -156,8 +156,8 @@ describe 'Two different instances of Tomcat 6 in the same manifest', :unless => 
       }
       EOS
       apply_manifest(pp, :catch_failures => true, :acceptable_exit_codes => [0,2])
+      shell('sleep 15')
     end
-    sleep 15
     it 'tomcat6 should be display friendly message when war is not deployed' do
       shell('curl localhost:8280/tomcat6-sample/hello.jsp') do |r|
       #curl_with_retries('curl port 8081', default, 'localhost:8081', 0, 10, 2) do |r|
@@ -190,8 +190,8 @@ describe 'Two different instances of Tomcat 6 in the same manifest', :unless => 
       }
       EOS
       apply_manifest(pp, :catch_failures => true, :acceptable_exit_codes => [0,2])
+      shell('sleep 15')
     end
-    sleep 15
     it 'tomcat6 should be serving a war on port 8280' do
       shell('curl localhost:8280/tomcat6-sample/hello.jsp') do |r|
       #curl_with_retries('curl port 8081', default, 'localhost:8081/war_two/hello.jsp', 0, 10, 2) do |r|
